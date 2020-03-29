@@ -1,0 +1,17 @@
+Generezi matrici de N x N. In fiecare celula ai elemente de tip (I, J). Elementele I de pe fiecare coloana si de pe fiecare rand trebe sa fie diferite. Elementele de tip J de pe fiecare coloana si de pe fiecare rand trebe sa fie diferite. Fiecare astfel de pereche din matrice trebe sa fie diferita.
+
+Cum faci generarea:
+
+A. Pasi in algoritmul Evolutionary: 
+1. Generezi un set random de solutii (in cazu de fata matricile descrise mai sus), aka o populatie initiala
+2. Combini elemente din populatie doua cate doua (iei parte dintr-o matrice, parte din alta si creezi o noua matrice) (nu trebe combinate toate, nu trebe combinate ordonat. You do you)
+3. Aplici o mutatie pe populatie (schimbi chestii random in matrici random)
+4. Ordonezi populatia dupa corectitudinea solutiilor (iti trebe o functie care sa iti dea valori diferite in functie de cat is de valide matricile; ex: 0 = valid, n = numar de elemente duble)
+5. Selectezi o parte mai buna din populatie care sa treaca in urmatoarea generatie
+6. Repeat from 2.
+
+B. Hill Climbing
+1. Generezi o solutie random.
+2. Din solutia generata creezi un set de solutii (ex: inlocuiesti un rand din matrice cu toate randurile posibile, indiferent de corectitudinea lor)
+3. Il selectezi pe cel mai bun din solutiile respective
+4. Repeat from 2
