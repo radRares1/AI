@@ -6,9 +6,7 @@ Created on Wed Mar 25 21:56:37 2020
 """
 
 from individ import Individ
-from Repo import Repo
 from random import randint,choice
-import random
 import operator
 from sys import exit
 
@@ -242,103 +240,77 @@ class Controller:
  
             
         self.__repo.setPopulation(newGeneration)
-        
-        
-        
-class PSO:
-    
-    
-    def __init__(self, popSize, neighSize,n, w, c1, c2):
-        self.__repo=Repo(n, popSize)
-        self.__repo.populate()
-        self.__pop = self.__repo.getPopulation()
-        print(len(self.__pop))
-        self.computePersonalBest()
-        self.__repo.splitNeighbours()
-        self.__neigh = self.__repo.getNeigh()
-        self.__popSize = popSize
-        self.__neighSize = neighSize
-        self.__w=w
-        self.__c1=c1
-        self.__c2=c2
-        
-        
-    def computePersonalBest(self):
-        for item in self.__pop:
-            item.setScore()
-            
-    def computeBestNeigh(self):
-        
-        for hood in self.__neigh:
-            min = 99999
-            best = 0
-            for individ in hood:
-                if individ.getPersonalBest() < min:
-                    min = individ.getPersonalBest()
-                    best = individ
-            
-            for individ in hood:
-                individ.setBestNeigh(best)
-                
-
-    def getPop(self):
-        return self.__pop
-
- 
-    
-    def getBestNeighbors(self, hoods):
-        best=[]
-        for item in hoods:
-            best.append(item[0].getBestNeigh())
-        return best
-    
-    def getDistance(part1, part2):
-        p1 = list(part1)
-        p2 = list(part2)
-        n=len(p1)
-        dist=0
-        for i in range(n):
-            dist+=abs(p1[i]-p2[i])
-        return dist
-    
-    
-    def updateVelocity(self, best):
-        population = self.__pop
-        for i in range(len(population)):
-            for j in range(len(population[0].getVelocity())):
-                newVelocity = self.__w * population[i].getVelocity()[j]
-                newVelocity = newVelocity + self.__c1*random.random()*self.getDistance(population[best[i]].getIndivid()[j],population[i].getIndivid()[j])
-                newVelocity=  newVelocity + self.__c2*random.random()*self.getDistance(population[i].getBestNeigh()[j], population[i].getIndivid()[j])
-                current = population[i].getVelocity().copy()
-                current[j]=newVelocity
-                population[i].setVelocity(current)
-        
-    def updatePosition(self, best):
-        population=self.__pop
-        for i in range(len(population)):
-            new=[]
-            for j in range(len(population[0].getVelocity())):
-                if random.random() < population[i].getVelocity()[j]:
-                    new.append(population[best[i]].getBestNeigh()[j])
-                else:
-                    new.append(population[i].getIndivid()[j])
-            population[i].setIndivid(new)
-            
-                 
-    def iteration(self):
-        bestNeighbors = self.getBestNeighbors(self.__neigh)
-        self.updateVelocity(bestNeighbors)
-        self.updatePosition(bestNeighbors)
-        scores=[]
-        for individ in self.__pop:
-            scores.append(individ.getPersonalBest())
-        
-
                 
  
         
         
             
+def testOk():
+    s = [[(1, 1), (2, 3), (3, 4),(4, 2)],
+          [(2, 2), (1, 4), (4, 3),(3, 1)],
+          [(3, 3), (4, 1), (1, 2),(2, 4)],
+          [(4, 4), (3, 2), (2, 1),(1, 3)]]
+    
+    s1 = [[(2, 2), (3, 1), (2, 1)],
+[(3, 3), (1, 2), (3, 2)],
+[(1, 1), (2, 3), (1, 3)]]
+    size=len(s)
+    ok=True
+    for column in range(0,size):
+        if ok == False:
+                break
+        for i in range(size-1):
+            if ok == False:
+                break
+            for j in range(i+1,size):
+                print("i")
+                print(i)
+                print("j")
+                print(j)
+                
+                print("primu")
+                print(s[i][column][0])
+                
+                print("doi")
+                print(s[j][column][0])
+                if s[i][column][0] == s[j][column][0]:
+                    ok = False
+                    break
+                if s[i][column][1] == s[j][column][1]:
+                    ok = False
+                    
+    for row in range(0,size):
+        if ok == False:
+                break
+        for i in range(size-1):
+            if ok == False:
+                break
+            for j in range(i+1,size):
+                print("i")
+                print(i)
+                print("j")
+                print(j)
+                
+                print("primu")
+                print(s[i][column][0])
+                
+                print("doi")
+                print(s[j][column][0])
+                if s[row][i][0] == s[row][j][0]:
+                    ok = False
+                    break
+                if s[row][i][1] == s[row][j][1]:
+                    ok = False
+    
+     
+                        
+                        
+    return ok
+    
+    
+    
 
+#print(testOk())            
+            
             
         

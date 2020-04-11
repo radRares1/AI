@@ -5,7 +5,7 @@ Created on Wed Mar 25 22:06:06 2020
 @author: Rares2
 """
 
-from Controller import Controller,PSO
+from Controller import Controller
 from Repo import Repo
 from hillClimb import HillController
 
@@ -16,7 +16,6 @@ def main():
 
     print("1.EA")
     print("2.Hill")
-    print("3.PSO")
     choice = int(input("Choose a method"))
     
     
@@ -75,37 +74,6 @@ def main():
             
         print("the best found solution is: ")
         print(controller.getCurrentSolution().toString())
-        
-    elif choice == 3:
-        noGen = 100
-        popSize = 10
-        indSize = 4
-        best=0
-        w=1.0
-        c1=1.2
-        c2=0.7
-        neighbourhoodSize = 2
-        fitnessList=[]
-        trials = []
-        trialCounter = 0
-        ctrl = PSO(popSize,neighbourhoodSize,indSize,w,c1,c2)
-        for i in range(noGen):
-            ctrl.iteration()
-        if trialCounter<30:
-            
-            print(len(ctrl.getPop()))
-            
-            fitnessList.append(ctrl.getPop()[0].getPersonalBest())
-            trials.append(trialCounter)
-            trialCounter+=1
-        
-        pop = ctrl.getPop()    
-        for i in range(popSize):
-            if(pop[i].getPersonalBest()<pop[best].getPersonalBest()):
-                best = i
-                
-        print("Best so far:")
-        print(pop[best])
 
     
     

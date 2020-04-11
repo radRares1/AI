@@ -13,7 +13,6 @@ class Repo:
         self.__no = no
         self.__n = n
         self.__population = []
-        self.__neigh = []
         
     def populate(self):
         for i in range(self.__no):
@@ -32,20 +31,3 @@ class Repo:
     
     def setPopulation(self,p):
         self.__population = p.copy()
-        
-        
-    def splitNeighbours(self):
-        pop = self.__population
-        while len(pop)>0:
-            
-            neigh = []
-            for i in range(4):
-                if len(pop) > 0:
-                    neigh.append(pop[0])
-                    pop.pop(0)
-            self.__neigh.append(neigh)
-            
-    def getNeigh(self):
-        return self.__neigh
-            
-        
