@@ -68,7 +68,7 @@ model.add(Dropout(0.2))
 model.add(Dense(10))
 model.add(Activation('softmax'))
 
-# compiling the sequential model
+# compiling the model
 model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
 
 # training the model and saving metrics
