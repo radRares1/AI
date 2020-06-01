@@ -1,0 +1,12 @@
+I chose the furnace problem and I'm using the mamdami model with the largest of maximum defuzzification.
+
+The two examples are set as: 1) cold(22) and small(2) yeild small(0.6)
+			     2) cool(50) and medium(6) yield medium(0.5)
+
+- in the temperature and in the capacity files I keep the points from the graphs in dictionaries with
+the label as key and a list of touples of (X,Y) points from the graph representing the areas of each label
+
+- the rules table is kept as a dictionary
+- in the fuz file is where the calculations are
+
+			
